@@ -18,12 +18,21 @@
 # Скачиваем и запускаем автоматический установщик
 curl -O https://raw.githubusercontent.com/kitay-sudo/self-host-shadowsocks/refs/heads/main/install_shadowsocks.sh
 chmod +x install_shadowsocks.sh
+
+# Интерактивная установка (с подтверждением)
 sudo ./install_shadowsocks.sh
+
+# ИЛИ автоматическая установка (без подтверждений)
+sudo ./install_shadowsocks.sh --auto
 ```
 
 **Альтернативно одной командой:**
 ```bash
+# Интерактивная установка
 curl -sSL https://raw.githubusercontent.com/kitay-sudo/self-host-shadowsocks/refs/heads/main/install_shadowsocks.sh | sudo bash
+
+# Автоматическая установка
+curl -sSL https://raw.githubusercontent.com/kitay-sudo/self-host-shadowsocks/refs/heads/main/install_shadowsocks.sh | sudo bash -s -- --auto
 ```
 
 **Что делает автоматический скрипт:**

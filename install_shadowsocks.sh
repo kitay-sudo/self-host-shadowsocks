@@ -247,17 +247,60 @@ EOF
 check_system() {
     # Проверяем Ubuntu
     if ! grep -q "Ubuntu" /etc/os-release 2>/dev/null; then
-        print_warning "Скрипт оптимизирован для Ubuntu. Продолжить? (y/N)"
+        print_warning "Скрипт оптимизирован для Ubuntu."
+        print_status "Обнаружена система: $(cat /etc/os-release | grep PRETTY_NAME | cut -d'"' -f2 2>/dev/null || echo 'Неизвестная')"
+        echo -n "Продолжить установку? (y/N): "
         read -r response
         if [[ ! "$response" =~ ^[Yy]$ ]]; then
-            print_status "Установка отменена"
+            print_status "Установка отменена пользователем"
             exit 0
         fi
+    else
+        print_success "Обнаружена Ubuntu - совместимая система"
     fi
+}
+
+# Функция показа помощи
+show_help() {
+    echo "Shadowsocks Auto Installer"
+    echo ""
+    echo "ИСПОЛЬЗОВАНИЕ:"
+    echo "  sudo $0 [ОПЦИИ]"
+    echo ""
+    echo "ОПЦИИ:"
+    echo "  --auto, -y    Автоматическая установка без запросов подтверждения"
+    echo "  --help, -h    Показать эту справку"
+    echo ""
+    echo "ПРИМЕРЫ:"
+    echo "  sudo $0                    # Интерактивная установка"
+    echo "  sudo $0 --auto            # Автоматическая установка"
+    echo "  sudo $0 -y                # Автоматическая установка (краткая форма)"
+    echo ""
 }
 
 # Основная логика
 main() {
+    # Проверка аргументов командной строки
+    local auto_mode=false
+    
+    case "$1" in
+        --help|-h)
+            show_help
+            exit 0
+            ;;
+        --auto|-y)
+            auto_mode=true
+            ;;
+        "")
+            # Нет аргументов - интерактивный режим
+            ;;
+        *)
+            print_error "Неизвестный аргумент: $1"
+            show_help
+            exit 1
+            ;;
+    esac
+    
     clear
     
     print_header "SHADOWSOCKS AUTO INSTALLER"
@@ -280,11 +323,30 @@ main() {
     echo "• Генерацию ключа подключения"
     echo ""
     
-    read -p "Продолжить установку? (y/N): " -r response
-    if [[ ! "$response" =~ ^[Yy]$ ]]; then
-        print_status "Установка отменена"
-        exit 0
+    if [[ "$auto_mode" == "true" ]]; then
+        print_success "Автоматический режим: пропускаем подтверждение"
+    else
+        echo -n "Продолжить установку? (y/N): "
+        read -r response
+        echo "" # Добавляем пустую строку для лучшего форматирования
+        
+        if [[ -z "$response" ]]; then
+            print_warning "Пустой ответ. Введите 'y' для продолжения или 'n' для отмены."
+            echo -n "Продолжить установку? (y/N): "
+            read -r response
+            echo ""
+        fi
+        
+        if [[ ! "$response" =~ ^[Yy]$ ]]; then
+            print_status "Установка отменена пользователем. Ответ: '$response'"
+            print_status "Для запуска скрипта введите 'y' или 'Y' при запросе подтверждения"
+            print_status "Или используйте флаг --auto для автоматической установки:"
+            print_status "sudo ./install_shadowsocks.sh --auto"
+            exit 0
+        fi
     fi
+    
+    print_success "Начинаем установку..."
     
     # Запуск установки
     install_shadowsocks
