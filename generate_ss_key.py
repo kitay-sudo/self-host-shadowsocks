@@ -108,10 +108,7 @@ def generate_ss_key():
     print(f"└─────────────────────────────────────────┘")
     
     print(f"\n💡 Инструкции по использованию:")
-    print(f"📱 Android: Установите 'Shadowsocks' → '+' → Вставьте ss:// ссылку")
-    print(f"📱 iOS: Установите 'Shadowrocket' → '+' → Вставьте ss:// ссылку")  
-    print(f"🖥️  Windows: Скачайте Shadowsocks-Windows → Импорт по ss:// ссылке")
-    print(f"🍎 macOS: Используйте ShadowsocksX-NG → Импорт по ss:// ссылке")
+    print(f"Установите 'Shadowsocks' → '+' → Вставьте ss:// ссылку")
     
     # Проверка корректности
     try:
