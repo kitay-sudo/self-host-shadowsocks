@@ -16,14 +16,14 @@
 
 ```bash
 # Скачиваем и запускаем автоматический установщик
-curl -O https://raw.githubusercontent.com/your-username/self-host-shadowsocks/main/install_shadowsocks.sh
+curl -O https://raw.githubusercontent.com/kitay-sudo/self-host-shadowsocks/refs/heads/main/install_shadowsocks.sh
 chmod +x install_shadowsocks.sh
 sudo ./install_shadowsocks.sh
 ```
 
 **Альтернативно одной командой:**
 ```bash
-curl -sSL https://raw.githubusercontent.com/your-username/self-host-shadowsocks/main/install_shadowsocks.sh | sudo bash
+curl -sSL https://raw.githubusercontent.com/kitay-sudo/self-host-shadowsocks/refs/heads/main/install_shadowsocks.sh | sudo bash
 ```
 
 **Что делает автоматический скрипт:**
