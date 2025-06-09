@@ -1,5 +1,9 @@
 # Shadowsocks Self-Host Server
 
+<div align="center">
+  <img src="prw.logo" alt="Shadowsocks Self-Host Server Logo" width="200"/>
+</div>
+
 ![Ubuntu](https://img.shields.io/badge/Ubuntu-18.04%20%7C%2020.04%20%7C%2022.04-E95420?style=flat&logo=ubuntu&logoColor=white)
 ![Python](https://img.shields.io/badge/Python-3.6%2B-3776AB?style=flat&logo=python&logoColor=white)
 ![Shadowsocks](https://img.shields.io/badge/Shadowsocks-libev-512BD4?style=flat&logo=shadowsocks&logoColor=white)
