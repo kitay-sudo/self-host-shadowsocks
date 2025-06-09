@@ -1,7 +1,15 @@
 # Shadowsocks Self-Host Server
-
 <div align="center">
-  <img src="prw.png" alt="Shadowsocks Self-Host Server Logo" width="200"/>
+  <table>
+    <tr>
+      <td width="50%" align="center">
+        <img src="Screenshot_3.png" alt="Screenshot 3" style="height: 300px; width: auto; object-fit: contain;"/>
+      </td>
+      <td width="50%" align="center">
+        <img src="Screenshot_4.png" alt="Screenshot 4" style="height: 300px; width: auto; object-fit: contain;"/>
+      </td>
+    </tr>
+  </table>
 </div>
 
 ![Ubuntu](https://img.shields.io/badge/Ubuntu-18.04%20%7C%2020.04%20%7C%2022.04-E95420?style=flat&logo=ubuntu&logoColor=white)
